@@ -131,7 +131,7 @@ command:
   {{ if .Vars.amazon2cis_rule_3_5_1_6 }}
   nic_assigned:
     title: 3.5.1.6 | Ensure network interfaces are assigned to appropriate zone
-    exec:  "nmcli -t connection show | awk -F ':' '{if($4){print $4}}' | while read INT; do firewall-cmd --get-active-zones | grep -B1 $INT; done"
+    exec:  "find /sys/class/net/* -maxdepth 1 | awk -F\"/\" '{print $NF}' | while read -r netint; do [ \"$netint\" != \"lo\" ] && echo \"$netint\"; done | while read -r netint; do firewall-cmd --get-active-zones | grep -B1 $netint; done"
     exit-status: 0
     {{ range .Vars.amazon2cis_firewall_interface }}
     stdout: {{ . }}

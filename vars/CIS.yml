@@ -373,8 +373,7 @@ amazon2cis_ip6tables_boot_config: /etc/sysconfig/ip6tables
 
 amazon2cis_default_firewall_zone: 'public'
 amazon2cis_firewall_interface:
-  - ['ens224']
-  - ['ens192']
+  - ['eth0']
 
 
 ### Section 4
