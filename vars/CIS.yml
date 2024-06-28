@@ -331,6 +331,8 @@ amazon2cis_gui: false
 
 # IPv6 required
 amazon2cis_ipv6_required: false
+# Method used to disable IPv6, either grub or sysctl
+amazon2cis_ipv6_disabled_by: sysctl 
 
 # System network parameters (host only OR host and router)
 amazon2cis_is_router: false
